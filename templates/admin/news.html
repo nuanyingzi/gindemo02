@@ -1,0 +1,14 @@
+{{ define "admin/news.html" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻</title>
+</head>
+<body>
+    <h1>这是后台新闻页面</h1>
+    <p>{{UnixToTime .date}}</p>
+    <p>{{Println .title .date}}</p>
+</body>
+</html>
+{{ end }}

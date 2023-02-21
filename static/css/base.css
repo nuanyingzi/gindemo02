@@ -1,0 +1,13 @@
+h2 {
+    position: relative;
+    bottom: 0;
+    background-color: azure;
+    color: aquamarine;
+    text-align: center;
+}
+
+h1 {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}

@@ -1,0 +1,15 @@
+{{ define "default/index.html" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="static/css/base.css">
+</head>
+<body>
+    <h1>{{ UnixToTime .time }}</h1>
+    {{ template "public/page_header" . }}
+    {{ template "public/page_footer" . }}
+</body>
+</html>
+{{ end }}

@@ -1,0 +1,39 @@
+{{ define "default/news.html" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .title }}</title>
+</head>
+<body>
+    <h1>这是前台新闻页</h1>
+    <!--  变量赋值  -->
+    {{ $t := .score }}
+
+    <!--  条件判断1  -->
+    {{ if gt $t 60}}
+    <p>及格</p>
+    {{ else }}
+    <p>不及格</p>
+    {{ end }}
+
+    <!--  条件判断2  -->
+    {{ if ge .score 90}}
+    <p>优秀</p>
+    {{ else if ge .score 70}}
+    <p>良好</p>
+    {{ else if ge .score 60}}
+    <p>及格</p>
+    {{ else }}
+    <p>不及格</p>
+    {{ end }}
+
+    <!--  循环遍历  -->
+    <ul>
+    {{ range $key,$val := .hobby}}
+        <li>{{ $val }}</li>
+    {{ end }}
+    </ul>
+</body>
+</html>
+{{ end }}
