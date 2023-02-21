@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"gindemo02/controllers/admin"
 	"gindemo02/middlewares"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -27,9 +28,20 @@ func AdminRoutersInit(r *gin.Engine) {
 
 		adminUserRouter := adminRouter.Group("user")
 		{
-			adminUserRouter.GET("index", func(c *gin.Context) {
-				c.HTML(http.StatusOK, "admin/useradd.html", gin.H{})
-			})
+			// 用户页
+			adminUserRouter.GET("index", admin.UserController{}.Index)
+			adminUserRouter.GET("index2", admin.UserController{}.Index2)
+			adminUserRouter.GET("index3", admin.UserController{}.Index3)
+
+			// 单文件上传
+			adminUserRouter.POST("doUpload", admin.UserController{}.DoUpload)
+
+			// 不同名字多文件上传
+			adminUserRouter.POST("doEdit", admin.UserController{}.DoEdit)
+
+			// 相同名字多文件上传
+			adminUserRouter.POST("doEdit2", admin.UserController{}.DoEdit2)
+
 		}
 	}
 }
