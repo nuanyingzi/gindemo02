@@ -1,0 +1,5 @@
+# gindemo02/controllers/index
+controllers\index\IndexController.go:15:2: not enough arguments in call to session.Options
+	have ()
+	want ("github.com/gin-contrib/sessions".Options)
+note: module requires Go 1.19

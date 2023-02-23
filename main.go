@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"gindemo02/models"
 	"gindemo02/routers"
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
 	"html/template"
-	"net/http"
 )
 
 type New struct {
@@ -58,23 +59,10 @@ func main() {
 	// 全局中间件
 	//r.Use(initMiddlewareOne, initMiddlewareTwo)
 
-	r.GET("/", func(context *gin.Context) {
-		fmt.Println("我是首页")
-		context.String(http.StatusOK, "首页")
-	})
-
-	/*// GET请求传值
-	r.GET("/", func(c *gin.Context) {
-		username := c.Query("username")
-		age := c.Query("age")
-		page := c.DefaultQuery("page", "1")
-
-		c.JSON(http.StatusOK, gin.H{
-			"username": username,
-			"age":      age,
-			"page":     page,
-		})
-	})*/
+	// 配置session中间件
+	// 创建基于cookie的存储引擎，shuiche 参数是用于加密的密钥，可以随便填写
+	store := cookie.NewStore([]byte("shuiche"))
+	r.Use(sessions.Sessions("mysession", store))
 
 	/*// POST演示
 	r.GET("/index/user", func(c *gin.Context) {
